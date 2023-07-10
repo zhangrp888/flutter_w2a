@@ -1,7 +1,8 @@
 package com.huntmobi.web2app.bean;
+import com.alibaba.fastjson.annotation.JSONField;
 
 public class landingreadresponseinfo {
-
+    @JSONField(name = "w2a_data_encrypt")
     private String w2a_data_encrypt;
 
     public String getW2a_data_encrypt() {

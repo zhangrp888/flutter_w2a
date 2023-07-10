@@ -1,10 +1,13 @@
 package com.huntmobi.web2app.bean;
-
+import com.alibaba.fastjson.annotation.JSONField;
 public class updatedatainfo {
-
+    @JSONField(name = "device_id")
     private DeviceId device_id;
+    @JSONField(name = "em")
     private String em;
+    @JSONField(name = "fb_login_id")
     private String fb_login_id;
+    @JSONField(name = "external_id")
     private String external_id;
 
     public String getPh() {
@@ -14,7 +17,7 @@ public class updatedatainfo {
     public void setPh(String ph) {
         this.ph = ph;
     }
-
+    @JSONField(name = "ph")
     private String ph;
 
     public String getCountry() {
@@ -72,13 +75,19 @@ public class updatedatainfo {
     public void setDb(String db) {
         this.db = db;
     }
-
+    @JSONField(name = "country")
     private String country;
+    @JSONField(name = "zp")
     private String zp;
+    @JSONField(name = "ct")
     private String ct;
+    @JSONField(name = "ge")
     private String ge;
+    @JSONField(name = "fn")
     private String fn;
+    @JSONField(name = "ln")
     private String ln;
+    @JSONField(name = "db")
     private String db;
 
     public String getSt() {
@@ -88,9 +97,9 @@ public class updatedatainfo {
     public void setSt(String st) {
         this.st = st;
     }
-
+    @JSONField(name = "st")
     private String st;
-
+    @JSONField(name = "w2a_data_encrypt")
     private String w2a_data_encrypt;
 
     public DeviceId getDevice_id() {
@@ -134,10 +143,15 @@ public class updatedatainfo {
     }
 
     public static class DeviceId {
+        @JSONField(name = "imei")
         private String imei;
+        @JSONField(name = "android_ID")
         private String android_ID;
+        @JSONField(name = "advertiser_ID")
         private String advertiser_ID;
+        @JSONField(name = "idfv")
         private String idfv;
+        @JSONField(name = "idfa")
         private String idfa;
 
         public String getImei() {

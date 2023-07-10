@@ -1,8 +1,10 @@
 package com.huntmobi.web2app.bean;
+import com.alibaba.fastjson.annotation.JSONField;
 
 public class sessioninfo {
-
+    @JSONField(name = "w2a_data_encrypt")
     private String w2a_data_encrypt;
+    @JSONField(name = "device_id")
     private DeviceId device_id;
 
     public String getW2a_data_encrypt() {
@@ -22,10 +24,15 @@ public class sessioninfo {
     }
 
     public static class DeviceId {
+        @JSONField(name = "imei")
         private String imei;
+        @JSONField(name = "android_ID")
         private String android_ID;
+        @JSONField(name = "advertiser_ID")
         private String advertiser_ID;
+        @JSONField(name = "idfv")
         private String idfv;
+        @JSONField(name = "idfa")
         private String idfa;
 
         public String getImei() {

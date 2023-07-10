@@ -1,11 +1,14 @@
 package com.huntmobi.web2app.bean;
+import com.alibaba.fastjson.annotation.JSONField;
 
 import java.util.List;
 
 public class purchaseinfo {
-
+    @JSONField(name = "device_id")
     private DeviceId device_id;
+    @JSONField(name = "custom_data")
     private CustomData custom_data;
+    @JSONField(name = "w2a_data_encrypt")
     private String w2a_data_encrypt;
 
     public DeviceId getDevice_id() {
@@ -33,10 +36,15 @@ public class purchaseinfo {
     }
 
     public static class DeviceId {
+        @JSONField(name = "imei")
         private String imei;
+        @JSONField(name = "android_ID")
         private String android_ID;
+        @JSONField(name = "advertiser_ID")
         private String advertiser_ID;
+        @JSONField(name = "idfv")
         private String idfv;
+        @JSONField(name = "idfa")
         private String idfa;
 
         public String getImei() {
@@ -81,11 +89,17 @@ public class purchaseinfo {
     }
 
     public static class CustomData {
+        @JSONField(name = "event_id")
         private String event_id;
+        @JSONField(name = "event_name")
         private String event_name;
+        @JSONField(name = "currency")
         private String currency;
+        @JSONField(name = "value")
         private String value;
+        @JSONField(name = "content_type")
         private String content_type;
+        @JSONField(name = "content_ids")
         private List<String> content_ids;
 
         public String getEvent_id() {
