@@ -1,10 +1,14 @@
 package com.huntmobi.web2app.bean;
+import com.alibaba.fastjson.annotation.JSONField;
 
 public class InstallInfo {
-
+    @JSONField(name = "device_id")
     private DeviceId device_id;
+    @JSONField(name = "event_name")
     private String event_name;
+    @JSONField(name = "device_info")
     private DeviceInfo device_info;
+    @JSONField(name = "w2a_data_encrypt")
     private String w2a_data_encrypt;
 
     public DeviceId getDevice_id() {
@@ -40,10 +44,15 @@ public class InstallInfo {
     }
 
     public static class DeviceId {
+        @JSONField(name = "imei")
         private String imei;
+        @JSONField(name = "android_ID")
         private String android_ID;
+        @JSONField(name = "advertiser_ID")
         private String advertiser_ID;
+        @JSONField(name = "idfv")
         private String idfv;
+        @JSONField(name = "idfa")
         private String idfa;
 
         public String getImei() {
@@ -88,10 +97,15 @@ public class InstallInfo {
     }
 
     public static class DeviceInfo {
+        @JSONField(name = "brand")
         private String brand;
+        @JSONField(name = "model")
         private String model;
+        @JSONField(name = "language")
         private String language;
+        @JSONField(name = "osVersion")
         private String osVersion;
+        @JSONField(name = "screenSize")
         private String screenSize;
 
         public String getBrand() {
