@@ -1,4 +1,5 @@
 package com.huntmobi.web2app.utils;
+import com.alibaba.fastjson.annotation.JSONField;
 
 public class NetInfo {
 	public int getCode() {
@@ -24,9 +25,11 @@ public class NetInfo {
 	public void setData(String data) {
 		this.data = data;
 	}
-
+	@JSONField(name = "code")
 	private int code;
+	@JSONField(name = "message")
 	private String message;
+	@JSONField(name = "data")
 	private String data;
 
 
