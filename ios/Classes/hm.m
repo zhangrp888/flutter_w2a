@@ -404,6 +404,8 @@
 
 
 + (void)init:(NSString *)Gateway InstallEventName:(NSString *)InstallEventName success : (void(^)(NSArray * array))successBlock {
+    NSLog(@"gateway: %@", Gateway);
+    NSLog(@"InstallEventName: %@", InstallEventName);
     if (Gateway.length < 1) {
         return;
     }
@@ -415,6 +417,7 @@
     [userDefaults setObject:Gateway forKey:@"HM_Gateway"];// 一个基于Https://开头加上域名构成的网关URL，不包含结尾的 /
     [userDefaults setObject:InstallEventName.length > 0 ? InstallEventName : @"CompleteRegistration" forKey:@"HM_InstallEventName"];// 完成注册的事件名称，如果不传默认为：CompleteRegistration
     NSString *isFirst = [userDefaults objectForKey:@"HM_isFirstInsert"];
+    NSLog(@"isFirst: %@", isFirst);
     if ([isFirst isEqual: @"0"]) { //  不是第一次安装
         NSString *HM_W2a_Data = [userDefaults objectForKey:@"HM_W2a_Data"];
         if (HM_W2a_Data.length > 0) { // 是web2App用户
@@ -427,6 +430,7 @@
         [userDefaults setObject:@"0" forKey:@"HM_isFirstInsert"];
         BOOL isNeedRequest = true;
         NSString *copyString = [[UIPasteboard generalPasteboard] string];
+        NSLog(@"copyString: %@", copyString);
         if (copyString.length > 0) { //
             NSString *preStr = @"w2a_data:";
             BOOL result = [copyString hasPrefix:preStr];
@@ -444,6 +448,7 @@
                 }];
             }
         } else {
+            NSLog(@"copyString1: %@", copyString);
             isNeedRequest = false;
             [hm getWebViewInfo:^(NSArray *array) {
                 successBlock(array);
@@ -476,10 +481,12 @@
     */
     NSUserDefaults *userDefaults =[NSUserDefaults standardUserDefaults];
     NSString *Gateway = [userDefaults objectForKey:@"HM_Gateway"];
+    NSLog(@"Gateway: %@", Gateway);
     if (Gateway.length < 1) {
         return;
     }
     NSString *url = [NSString stringWithFormat:@"%@/landingpageread", Gateway];
+    NSLog(@"Gateway: %@", url);
     NSMutableDictionary * dic = [NSMutableDictionary dictionaryWithDictionary:@{}];
     NSString *jsonString = [userDefaults objectForKey:@"HM_WebView_Fingerprint"];
     if (jsonString.length > 0) {
@@ -499,9 +506,11 @@
             [userDefaults setObject:w2a_data_encrypt forKey:@"HM_W2a_Data"];
             [userDefaults synchronize];
             [hm requestNewUser:^(NSArray *array) {
+                NSLog(@"init success");
                 block(array);
             }];
         } else {
+            NSLog(@"init fail");
             block(@[]);
         }
     } failBlock:^(NSError * _Nonnull error) {
