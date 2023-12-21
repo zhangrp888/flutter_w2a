@@ -18,7 +18,7 @@
     [hm useFingerPrinting: isEnabled];
     result(@"");
   } else if ([@"init" isEqualToString:call.method]) {
-    NSString *gateway = call.arguments[@"gateway"];
+    NSString *gateway = call.arguments[@"gateWay"];
     NSString *installEventName = call.arguments[@"installEventName"];
     NSLog(@"调用了初始化");
     [hm init: gateway InstallEventName: installEventName success:^(NSArray * _Nonnull array) {
